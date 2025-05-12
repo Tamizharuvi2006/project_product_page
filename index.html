@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Shoes - Shop Now</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+</head>
+
+<body class="bg-gray-50 font-sans">
+    <!-- Header -->
+    <header class="bg-white shadow-sm py-4">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <div class="text-2xl font-bold gradient-text animate-float">ZENITSU</div>
+            <nav class="hidden md:flex space-x-8">
+                <a href="#" class="text-gray-700 hover:text-blue-600 relative group">
+                    Home
+                </a>
+                <a href="#" class="text-gray-700 hover:text-blue-600 relative group">
+                    Shop
+                </a>
+                <a href="#" class="text-gray-700 hover:text-blue-600 relative group">
+                    Collections
+                </a>
+                <a href="#" class="text-gray-700 hover:text-blue-600 relative group">
+                    About
+                </a>
+                <a href="#" class="text-gray-700 hover:text-blue-600 relative group">
+                    Contact
+                </a>
+            </nav>
+            <div class="flex items-center space-x-4">
+                <button id="search-btn" class="p-2 text-gray-700 hover:text-blue-600">
+                    <i class="fas fa-search"></i>
+                </button>
+                <button id="user-btn" class="p-2 text-gray-700 hover:text-blue-600 relative">
+                    <i class="fas fa-user"></i>
+                </button>
+                <div id="user-overlay" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50">
+                    <div class="absolute right-4 top-16 bg-white rounded-lg shadow-lg w-80 overflow-hidden">
+                        <div class="p-4 border-b">
+                            <div class="flex items-center justify-between mb-4">
+                                <h3 class="text-lg font-semibold">User Account</h3>
+                                <button id="close-user" class="text-gray-500 hover:text-gray-700">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <div class="w-12 h-12 rounded-full bg-gray-200 flex items-center justify-center">
+                                    <i class="fas fa-user text-gray-600 text-xl"></i>
+                                </div>
+                                <div>
+                                    <p class="font-medium">Tamizharuvi</p>
+                                    <p class="text-sm text-gray-500">aruvi2907@gmail.com</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-2">
+                            <a href="#" class="flex items-center space-x-3 p-3 hover:bg-gray-100 rounded-lg transition-colors">
+                                <i class="fas fa-user-circle text-gray-600"></i>
+                                <span>Profile</span>
+                            </a>
+                            <a href="#" class="flex items-center space-x-3 p-3 hover:bg-gray-100 rounded-lg transition-colors">
+                                <i class="fas fa-cog text-gray-600"></i>
+                                <span>Settings</span>
+                            </a>
+                            <a href="#" class="flex items-center space-x-3 p-3 hover:bg-gray-100 rounded-lg transition-colors">
+                                <i class="fas fa-question-circle text-gray-600"></i>
+                                <span>Help Center</span>
+                            </a>
+                        </div>
+                        <div class="p-3 border-t">
+                            <a href="#" class="flex items-center space-x-3 p-3 hover:bg-gray-100 rounded-lg text-red-600 transition-colors">
+                                <i class="fas fa-sign-out-alt"></i>
+                                <span>Sign Out</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <button class="p-2 text-gray-700 hover:text-blue-600 relative">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span
+                        class="absolute -top-1 -right-1 bg-blue-600 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">3</span>
+                </button>
+                <button id="mobile-menu-btn" class="md:hidden p-2 text-gray-700 hover:text-blue-600">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 md:hidden">
+        <div class="fixed right-0 top-0 h-full w-80 bg-white shadow-lg transform transition-transform duration-300 ease-in-out translate-x-full">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-8">
+                    <h3 class="text-xl font-semibold">Menu</h3>
+                    <button id="close-mobile-menu" class="text-gray-500 hover:text-gray-700">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <nav class="space-y-4">
+                    <a href="#" class="block text-gray-700 hover:text-blue-600 py-2 border-b border-gray-100">Home</a>
+                    <a href="#" class="block text-gray-700 hover:text-blue-600 py-2 border-b border-gray-100">Shop</a>
+                    <a href="#" class="block text-gray-700 hover:text-blue-600 py-2 border-b border-gray-100">Collections</a>
+                    <a href="#" class="block text-gray-700 hover:text-blue-600 py-2 border-b border-gray-100">About</a>
+                    <a href="#" class="block text-gray-700 hover:text-blue-600 py-2 border-b border-gray-100">Contact</a>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <div class="flex flex-col lg:flex-row gap-8">
+            <!-- Product Gallery -->
+            <div class="lg:w-1/2">
+                <!-- Main Image -->
+                <div class="zoom-container mb-4 rounded-lg overflow-hidden bg-gray-100 hover-glow">
+                    <img id="main-image"
+                        src="https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80"
+                        alt="Premium Sneakers" class="zoom-image w-full h-[300px] md:h-[450px] object-cover cursor-zoom-in">
+                </div>
+
+                <!-- Thumbnails -->
+                <div class="product-gallery flex gap-2 overflow-x-auto py-2">
+                    <div class="flex-none w-20 h-20">
+                        <img src="https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80"
+                            alt="Sneaker side view"
+                            class="thumbnail w-full h-full object-cover rounded cursor-pointer border-2 border-transparent hover:border-gray-300"
+                            data-fullsize="https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80">
+                    </div>
+                    <div class="flex-none w-20 h-20">
+                        <img src="https://images.unsplash.com/photo-1560769629-975ec94e6a86?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                            alt="Sneaker back view"
+                            class="thumbnail w-full h-full object-cover rounded cursor-pointer border-2 border-transparent hover:border-gray-300"
+                            data-fullsize="https://images.unsplash.com/photo-1560769629-975ec94e6a86?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Details -->
+            <div class="lg:w-1/2">
+                <div class="mb-4">
+                    <span
+                        class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded">Bestseller</span>
+                    <span class="ml-2 bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">New
+                        Arrival</span>
+                </div>
+
+                <h1 class="text-3xl font-bold text-gray-900 mb-2">Premium Nike Sneakers</h1>
+                <div class="flex items-center mb-4">
+                    <div class="flex text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <span class="text-gray-600 ml-2">4.7 (100 reviews)</span>
+                </div>
+
+                <div class="mb-6">
+                    <span class="text-2xl font-bold text-gray-900">₹ 2599.99</span>
+                    <span class="ml-2 text-lg text-gray-500 line-through">₹ 3199.99</span>
+                    <span class="ml-2 text-green-600 font-medium">Save ₹600 </span>
+                </div>
+
+                <div class="mb-6">
+                    <p class="text-gray-700">Experience ultimate comfort with our premium sneakers featuring advanced
+                        cushioning technology, breathable mesh upper, and durable rubber outsole for all-day support.
+                    </p>
+                </div>
+
+                <!-- Color Selection -->
+                <div class="mb-6">
+                    <div class="flex justify-between items-center mb-2">
+                        <label class="block text-sm font-medium text-gray-700">Color: <span id="selected-color"
+                                class="font-normal">orange</span></label>
+                        <button id="compare-colors-btn"
+                            class="text-sm text-blue-600 hover:text-blue-800 flex items-center">
+                            <i class="fas fa-exchange-alt mr-1"></i> Compare Colors
+                        </button>
+                    </div>
+                    <div class="flex space-x-2">
+                        <button class="color-swatch w-10 h-10 rounded-full bg-orange-800 border-2 border-white shadow"
+                            data-color="Navy"
+                            data-image="https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"></button>
+                        <button class="color-swatch w-10 h-10 rounded-full bg-gray-400 border-2 border-white shadow"
+                            data-color="Gray"
+                            data-image="https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"></button>
+                    </div>
+                </div>
+
+                <!-- Size Selection -->
+                <div class="mb-6">
+                    <div class="flex justify-between items-center mb-2">
+                        <label class="block text-sm font-medium text-gray-700">Size: <span id="selected-size"
+                                class="font-normal">US 8</span></label>
+                        <button id="size-chart-btn" class="text-sm text-blue-600 hover:text-blue-800">Size
+                            Chart</button>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <button class="size-option selected px-4 py-2 border rounded-md">US 8</button>
+                        <button class="size-option px-4 py-2 border rounded-md hover:bg-gray-100">US 9</button>
+                        <button class="size-option px-4 py-2 border rounded-md hover:bg-gray-100">US 10</button>
+                        <button class="size-option px-4 py-2 border rounded-md hover:bg-gray-100">US 11</button>
+                        <button class="size-option px-4 py-2 border rounded-md hover:bg-gray-100">US 12</button>
+                    </div>
+                </div>
+
+                <!-- Quantity and Add to Cart -->
+                <div class="mb-8">
+                    <div class="flex items-center mb-4">
+                        <label class="block text-sm font-medium text-gray-700 mr-4">Quantity:</label>
+                        <div class="flex items-center border rounded-md">
+                            <button class="quantity-decrease px-3 py-1 text-gray-600 hover:bg-gray-100">-</button>
+                            <span class="quantity-display px-4 py-1 text-center w-12">1</span>
+                            <button class="quantity-increase px-3 py-1 text-gray-600 hover:bg-gray-100">+</button>
+                        </div>
+                    </div>
+                    <button
+                        class="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 px-4 rounded-md font-medium transition duration-300 flex items-center justify-center hover-lift">
+                        <i class="fas fa-shopping-cart mr-2"></i> Add to Cart
+                    </button>
+                </div>
+
+                <!-- Product Details Tabs -->
+                <div class="border-t border-gray-200 pt-4">
+                    <div class="flex border-b">
+                        <button class="tab-btn active px-4 py-2 font-medium text-blue-600 border-b-2 border-blue-600"
+                            data-tab="description">Description</button>
+                        <button class="tab-btn px-4 py-2 font-medium text-gray-500 hover:text-gray-700"
+                            data-tab="info">Product Info</button>
+                        <button class="tab-btn px-4 py-2 font-medium text-gray-500 hover:text-gray-700"
+                            data-tab="shipping">Shipping</button>
+                    </div>
+
+                    <div class="tab-content active py-4" id="description">
+                        <p class="text-gray-700 mb-4">Our Premium Comfort Sneakers are designed for all-day wear with
+                            innovative cushioning technology that adapts to your foot's natural movement.</p>
+                        <ul class="list-disc pl-5 text-gray-700 space-y-2">
+                            <li>Breathable mesh upper for maximum airflow</li>
+                            <li>Responsive cushioning system for energy return</li>
+                            <li>Durable rubber outsole with multi-directional traction</li>
+                            <li>Lightweight construction reduces fatigue</li>
+                            <li>Reinforced toe cap for added durability</li>
+                        </ul>
+                    </div>
+
+                    <div class="tab-content py-4" id="info">
+                        <table class="w-full text-gray-700">
+                            <tbody class="divide-y divide-gray-200">
+                                <tr>
+                                    <td class="py-2 font-medium">Material</td>
+                                    <td class="py-2">Breathable Mesh, Rubber</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-2 font-medium">Weight</td>
+                                    <td class="py-2">320g (per shoe)</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-2 font-medium">Sole</td>
+                                    <td class="py-2">High-traction Rubber</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-2 font-medium">Closure</td>
+                                    <td class="py-2">Lace-up</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-2 font-medium">Care Instructions</td>
+                                    <td class="py-2">Hand wash with mild detergent, air dry</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="tab-content py-4" id="shipping">
+                        <div class="space-y-4 text-gray-700">
+                            <div>
+                                <h3 class="font-medium">Shipping Options</h3>
+                                <p>Standard: 3-5 business days - Free</p>
+                                <p>Express: 1-2 business days - ₹ 250.00</p>
+                            </div>
+                            <div>
+                                <h3 class="font-medium">Returns</h3>
+                                <p>Easy 30-day return policy. Free returns for unworn items.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pair Well With Section -->
+        <section class="mt-16">
+            <h2 class="text-2xl font-bold mb-6">Pair Well With</h2>
+            <div class="relative">
+                <div class="product-gallery flex gap-4 overflow-x-auto py-2 pb-6">
+                    <!-- Product Card 1 -->
+                    <div class="product-card flex-none w-64 glass rounded-lg shadow-sm p-4 hover-lift">
+                        <div class="h-40 bg-gray-100 rounded-lg mb-3 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80"
+                                alt="Running Socks" class="w-full h-full object-cover">
+                        </div>
+                        <h3 class="font-medium text-gray-900 mb-1">Performance Running Socks</h3>
+                        <div class="flex items-center mb-2">
+                            <div class="flex text-yellow-400 text-xs">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <span class="text-gray-500 text-xs ml-1">(42)</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-gray-900">₹ 2599.99</span>
+                            <button class="text-blue-600 hover:text-blue-800 p-1">
+                                <i class="fas fa-plus-circle text-xl"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Product Card 2 -->
+                    <div class="product-card flex-none w-64 glass rounded-lg shadow-sm p-4 hover-lift">
+                        <div class="h-40 bg-gray-100 rounded-lg mb-3 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1574859154521-4f7aa07d91b9?q=80&w=2073&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                                alt="Shoe Cleaner" class="w-full h-full object-cover">
+                        </div>
+                        <h3 class="font-medium text-gray-900 mb-1">Premium Snikers Shoe</h3>
+                        <div class="flex items-center mb-2">
+                            <div class="flex text-yellow-400 text-xs">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <span class="text-gray-500 text-xs ml-1">(28)</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-gray-900">₹ 2699.99</span>
+                            <button class="text-blue-600 hover:text-blue-800 p-1">
+                                <i class="fas fa-plus-circle text-xl"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Product Card 3 -->
+                    <div class="product-card flex-none w-64 glass rounded-lg shadow-sm p-4 hover-lift">
+                        <div class="h-40 bg-gray-100 rounded-lg mb-3 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1608231387042-66d1773070a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80"
+                                alt="Shoe Insoles" class="w-full h-full object-cover">
+                        </div>
+                        <h3 class="font-medium text-gray-900 mb-1">Comfort shoes</h3>
+                        <div class="flex items-center mb-2">
+                            <div class="flex text-yellow-400 text-xs">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <span class="text-gray-500 text-xs ml-1">(56)</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-gray-900">₹ 2799.99</span>
+                            <button class="text-blue-600 hover:text-blue-800 p-1">
+                                <i class="fas fa-plus-circle text-xl"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Cart -->
+    <div id="cart-overlay" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+        <div class="bg-white p-6 rounded-lg max-w-lg w-full mx-4 relative">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-xl font-bold">Shopping Cart</h2>
+                <button id="close-cart" class="text-gray-500 hover:text-gray-700">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            <div class="space-y-4">
+                <!-- Cart items will be dynamically inserted here by JavaScript -->
+            </div>
+            <div class="mt-6 space-y-4">
+                <div class="flex justify-between text-sm">
+                    <span>Subtotal</span>
+                    <span class="font-bold">₹3799.97</span>
+                </div>
+                <div class="flex justify-between text-sm">
+                    <span>Shipping</span>
+                    <span class="font-bold">Free</span>
+                </div>
+                <div class="flex justify-between text-lg font-bold pt-4 border-t">
+                    <span>Total</span>
+                    <span>₹3799.97</span>
+                </div>
+                <button
+                    class="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 px-4 rounded-md font-medium transition duration-300">
+                    Proceed to Checkout
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modals -->
+    <div id="size-chart-modal" class="modal fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center">
+        <div class="modal-content bg-white p-6 rounded-lg max-w-2xl w-full mx-4">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-xl font-bold">Size Chart</h2>
+                <button class="close-modal text-gray-500 hover:text-gray-700">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            <table class="w-full border-collapse">
+                <thead>
+                    <tr class="bg-gray-100">
+                        <th class="p-2 border">US Size</th>
+                        <th class="p-2 border">UK Size</th>
+                        <th class="p-2 border">EU Size</th>
+                        <th class="p-2 border">CM</th>
+                    </tr>
+                </thead>
+                <tbody class="text-center">
+                    <tr>
+                        <td class="p-2 border">8</td>
+                        <td class="p-2 border">7</td>
+                        <td class="p-2 border">41</td>
+                        <td class="p-2 border">26</td>
+                    </tr>
+                    <tr>
+                        <td class="p-2 border">9</td>
+                        <td class="p-2 border">8</td>
+                        <td class="p-2 border">42</td>
+                        <td class="p-2 border">27</td>
+                    </tr>
+                    <tr>
+                        <td class="p-2 border">10</td>
+                        <td class="p-2 border">9</td>
+                        <td class="p-2 border">43</td>
+                        <td class="p-2 border">28</td>
+                    </tr>
+                    <tr>
+                        <td class="p-2 border">11</td>
+                        <td class="p-2 border">10</td>
+                        <td class="p-2 border">44</td>
+                        <td class="p-2 border">29</td>
+                    </tr>
+                    <tr>
+                        <td class="p-2 border">12</td>
+                        <td class="p-2 border">11</td>
+                        <td class="p-2 border">45</td>
+                        <td class="p-2 border">30</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div id="compare-colors-modal"
+        class="modal fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center">
+        <div class="modal-content bg-white p-6 rounded-lg max-w-4xl w-full mx-4">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-xl font-bold">Compare Colors</h2>
+                <button class="close-modal text-gray-500 hover:text-gray-700">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="space-y-2">
+                    <img src="https://images.unsplash.com/photo-1600269452121-1f5d14148cd6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80"
+                        alt="Black" class="w-full h-48 object-cover rounded-lg">
+                    <p class="font-medium text-center">Black</p>
+                </div>
+                <div class="space-y-2">
+                    <img src="https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80"
+                        alt="Navy" class="w-full h-48 object-cover rounded-lg">
+                    <p class="font-medium text-center">Navy</p>
+                </div>
+                <div class="space-y-2">
+                    <img src="https://images.unsplash.com/photo-1600185365926-3a2ece3eaa1e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80"
+                        alt="Gray" class="w-full h-48 object-cover rounded-lg">
+                    <p class="font-medium text-center">Gray</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Search Overlay -->
+    <!-- Search Overlay -->
+    <div id="search-overlay" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50">
+        <div class="absolute right-4 top-16 bg-white rounded-lg shadow-lg w-80 overflow-hidden">
+            <div class="p-4 border-b">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="text-lg font-semibold">Search</h3>
+                    <button id="close-search" class="text-gray-500 hover:text-gray-700">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="relative">
+                    <input type="text" placeholder="Search for products..." class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <button class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-white shadow-sm mt-16">
+        <div class="container mx-auto px-4 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <!-- Company Info -->
+                <div class="space-y-4">
+                    <h3 class="text-2xl font-bold gradient-text">ZENITSU</h3>
+                    <p class="text-gray-600">Your premier destination for premium athletic and casual footwear.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-600 hover:text-blue-600 transition-colors">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-gray-600 hover:text-blue-600 transition-colors">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="https://www.instagram.com/itz._.zenitsu__" class="text-gray-600 hover:text-blue-600 transition-colors">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-600 hover:text-blue-600 transition-colors">
+                            <i class="fab fa-pinterest-p"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="space-y-4">
+                    <h4 class="text-lg font-semibold text-gray-800">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-600 hover:text-blue-600 transition-colors">About Us</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-blue-600 transition-colors">Contact</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-blue-600 transition-colors">FAQs</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-blue-600 transition-colors">Size Guide</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-blue-600 transition-colors">Shipping Info</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Customer Service -->
+                <div class="space-y-4">
+                    <h4 class="text-lg font-semibold text-gray-800">Customer Service</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-600 hover:text-blue-600 transition-colors">My Account</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-blue-600 transition-colors">Order Status</a>
+                        </li>
+                        <li><a href="#" class="text-gray-600 hover:text-blue-600 transition-colors">Returns</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-blue-600 transition-colors">Payment Options</a>
+                        </li>
+                        <li><a href="#" class="text-gray-600 hover:text-blue-600 transition-colors">Gift Cards</a></li>
+                    </ul>
+                </div>
+
+                <!-- Newsletter -->
+                <div class="space-y-4">
+                    <h4 class="text-lg font-semibold text-gray-800">Stay Updated</h4>
+                    <p class="text-gray-600">Subscribe to our newsletter for exclusive offers and updates.</p>
+                    <form class="space-y-2">
+                        <input type="email" placeholder="Your email address"
+                            class="w-full px-4 py-2 rounded bg-gray-100 text-gray-800 placeholder-gray-500 border border-gray-200 focus:outline-none focus:border-blue-400">
+                        <button type="submit"
+                            class="w-full bg-blue-600 text-white px-4 py-2 rounded font-medium hover:bg-blue-700 transition-colors">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Bottom Bar -->
+            <div
+                class="border-t border-gray-200 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+                <p class="text-gray-600 text-sm">&copy; 2023 ZENITSU. All rights reserved.</p>
+                <div class="flex space-x-6 text-sm">
+                    <a href="#" class="text-gray-600 hover:text-blue-600 transition-colors">Privacy Policy</a>
+                    <a href="#" class="text-gray-600 hover:text-blue-600 transition-colors">Terms of Service</a>
+                    <a href="#" class="text-gray-600 hover:text-blue-600 transition-colors">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="js/script.js"></script>
+</body>
+
+</html>
